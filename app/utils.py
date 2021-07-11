@@ -1,4 +1,7 @@
+
 def generic_model_mutation_process(model, data, id=None, commit=True):
+    """Esta funcion lo que nos permite es actualizar
+    o crear un nuevo dato en la db"""
     if id:
         item = model.objects.get(id=id)
         try:
@@ -10,8 +13,6 @@ def generic_model_mutation_process(model, data, id=None, commit=True):
             setattr(item, field, value)
     else:
         item = model(**data)
-
     if commit:
         item.save()
-
     return item

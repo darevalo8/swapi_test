@@ -3,11 +3,10 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()  # Load env variables
-
-SECRET_KEY = os.getenv('SECRET_KEY', 'Please-generate-a-private key')  # TODO: Generar un key seguro
+SECRET_KEY = os.getenv('SECRET_KEY', 'Please-generate-a-private key')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']  # TODO: dejar solo la URL donde va a estar disponible
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -36,7 +35,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'swapi.urls'
-
+TEST_RUNNER = "django.test.runner.DiscoverRunner"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

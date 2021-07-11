@@ -1,12 +1,9 @@
 import graphene
-from django.db.models import Q
-from graphene_django.filter import DjangoFilterConnectionField
-from graphene_django.types import DjangoObjectType
-from graphql_relay.node.node import from_global_id
 
-from .models import Planet, People, Film, Director, Producer
-from .mutations import AddPlanetMutation
-from .types import PlanetType, PeopleType, FilmType, DirectorType, ProducerType
+from graphene_django.filter import DjangoFilterConnectionField
+from app.mutations import AddOrUpdatePlanetMutation, CreatePeopleMutation
+from app.types import (PlanetType, PeopleType,
+                       FilmType, DirectorType, ProducerType)
 
 
 class Query(graphene.ObjectType):
@@ -27,4 +24,5 @@ class Query(graphene.ObjectType):
 
 
 class Mutation(graphene.ObjectType):
-    add_planet_mutation = AddPlanetMutation.Field()
+    add_planet_mutation = AddOrUpdatePlanetMutation.Field()
+    add_people = CreatePeopleMutation.Field()
